@@ -124,7 +124,7 @@ def run_battleship_game():
     """
     This is the main function.
     It generates the gameboard and the ships.
-    Incorporatesa turn limit.
+    Incorporates a turn limit.
     prompts user for input and provides feedback on turn results.
     """
     enemy_board = [[' '] * 5 for _ in range(5)]
@@ -192,4 +192,21 @@ def run_battleship_game():
 
                 enemy_target_board.generate_board('Enemy Target')
 
-                                                                        
+  game_over()
+
+def game_over():
+    """
+    This function runs when all ships has been sunk.
+    Prompts the user to start new game or exit game.
+    """
+    print('Game Over!')
+    restart = input('Do you want to try again? Y/N: \n').lower()
+
+    if restart == 'y':
+        run_battleship_game()
+    elif restart == 'n':
+        print('Thank you for your service! You are relieved of duty!')
+        quit()
+    else:
+        print('Input Error. Type Y/N.')
+        game_over()                                                                                
