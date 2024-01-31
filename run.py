@@ -118,4 +118,78 @@ class Ship:
             for column in row:
                 if column == 'X':
                     damaged_ships += 1
-        return damaged_ships  
+        return damaged_ships
+
+def run_battleship_game():
+    """
+    This is the main function.
+    It generates the gameboard and the ships.
+    Incorporatesa turn limit.
+    prompts user for input and provides feedback on turn results.
+    """
+    enemy_board = [[' '] * 5 for _ in range(5)]
+    enemy_target_board = GameBoard([[' '] * 5 for _ in range(5)])
+    user_board = [[' '] * 5 for _ in range(5)]
+    user_target_board = GameBoard([[' '] * 5 for _ in range(5)])
+
+    Ship.generate_fleet(enemy_board)
+    Ship.generate_fleet(user_board)
+
+    missiless = 15
+    enemy_missiles = 15
+
+    while missiles > 0:
+        enemy_target_board.generate_board('Enemy Target')
+        user_target_board.generate_board('User Target')
+
+        user_x_row, user_y_col = Ship.user_launch_mission()
+        while (
+            user_target_board.board[user_x_row][user_y_col] == '-'
+            or user_target_board.board[user_x_row][user_y_col] == 'X'
+        ):
+            print('That location has already been fired at. Choose a new location.')
+            user_x_row, user_y_col = Ship.user_launch_mission()
+
+        if enemy_board[user_x_row][user_y_col] == 'X':
+            print('Thats a hit! Enemy ship down!')
+            user_target_board.board[user_x_row][user_y_col] = 'X'
+        else:
+            print('Thats a miss. No ship at given location.')
+            user_target_board.board[user_x_row][user_y_col] = '-'
+
+        if Ship.count_damaged_ships(user_target_board.board) == 4:
+            print('Well done! You sank the enenmy fleet!')
+            break
+        else:
+            missiles -= 1
+            print(f'Missiles remaining: {missiles}.')
+            if missiles == 0:
+                print('Out of missiles! The enemy got away.')
+
+                user_target_board.generate_board('User Target')
+
+        enemy_x_row, enemy_y_col = Ship.enemy_launch_mission()
+        while (
+            enemy_target_board.board[enemy_x_row][enemy_y_col] == '-'
+            or enemy_target_board.board[enemy_x_row][enemy_y_col] == "X"
+        ):
+            enemy_x_row, enemy_y_col = Ship.enemy_launch_mission()
+
+        if user_board[enemy_x_row][enemy_y_col] == 'X':
+            print('Thats a hit! Enemy sunk one of out ships!')
+            enemy_target_board.board[enemy_x_row][enemy_y_col] = 'X'
+        else:
+            print('Enemy missed their shot!')
+            enemy_target_board.board[enemy_x_row][enemy_y_col] = '-'
+
+        if Ship.count_damaged_ships(enemy_target_board.board) == 4:
+            print('Retreat! All of out ships has been sunk!')
+            break
+        else:
+            enemy_missiles -= 1
+            if enemy_missiles == 0:
+                print('The enemy has used all their missiles.')
+
+                enemy_target_board.generate_board('Enemy Target')
+
+                                                                        
