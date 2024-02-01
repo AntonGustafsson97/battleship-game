@@ -50,8 +50,8 @@ class GameBoard:
         print('  x-x-x-x-x ')
         row_num = 1
         for row in self.board:
-            print("%d|%s|" % (row_number, "|".join(row)))
-            row_number += 1
+            print("%d|%s|" % (row_num, "|".join(row)))
+            row_num += 1
 
 class Ship:
     """
@@ -108,7 +108,7 @@ class Ship:
         """
         letter_choices = ['A', 'B', 'C', 'D', 'E']
         y_col = random.choice(letter_choices).upper()
-        x_row = random.randint(0, 8)
+        x_row = random.randint(0, 4)
         return int(x_row), GameBoard.co_ordinates()[y_col]
 
     @staticmethod
@@ -171,12 +171,12 @@ def run_battleship_game():
         enemy_x_row, enemy_y_col = Ship.enemy_launch_mission()
         while (
             enemy_target_board.board[enemy_x_row][enemy_y_col] == '-'
-            or enemy_target_board.board[enemy_x_row][enemy_y_col] == "X"
+            or enemy_target_board.board[enemy_x_row][enemy_y_col] == 'X'
         ):
             enemy_x_row, enemy_y_col = Ship.enemy_launch_mission()
 
         if user_board[enemy_x_row][enemy_y_col] == 'X':
-            print('Thats a hit! Enemy sunk one of out ships!')
+            print('Thats a hit! Enemy sunk one of our ships!')
             enemy_target_board.board[enemy_x_row][enemy_y_col] = 'X'
         else:
             print('Enemy missed their shot!')
