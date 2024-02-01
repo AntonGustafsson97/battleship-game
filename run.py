@@ -209,4 +209,11 @@ def game_over():
         quit()
     else:
         print('Input Error. Type Y/N.')
-        game_over()                                                                                            
+        game_over()
+
+def main():
+
+    run_battleship_game()
+
+if __name__ == "__main__":
+    main()                                                                                                        
