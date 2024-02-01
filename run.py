@@ -135,7 +135,7 @@ def run_battleship_game():
     Ship.generate_fleet(enemy_board)
     Ship.generate_fleet(user_board)
 
-    missiless = 15
+    missiles = 15
     enemy_missiles = 15
 
     while missiles > 0:
@@ -158,7 +158,7 @@ def run_battleship_game():
             user_target_board.board[user_x_row][user_y_col] = '-'
 
         if Ship.count_damaged_ships(user_target_board.board) == 4:
-            print('Well done! You sank the enenmy fleet!')
+            print('Well done! You sank the enemy fleet!')
             break
         else:
             missiles -= 1
@@ -183,7 +183,7 @@ def run_battleship_game():
             enemy_target_board.board[enemy_x_row][enemy_y_col] = '-'
 
         if Ship.count_damaged_ships(enemy_target_board.board) == 4:
-            print('Retreat! All of out ships has been sunk!')
+            print('Retreat! All of our ships has been sunk!')
             break
         else:
             enemy_missiles -= 1
@@ -192,7 +192,7 @@ def run_battleship_game():
 
                 enemy_target_board.generate_board('Enemy Target')
 
-  game_over()
+    game_over()
 
 def game_over():
     """
@@ -209,4 +209,4 @@ def game_over():
         quit()
     else:
         print('Input Error. Type Y/N.')
-        game_over()                                                                                
+        game_over()                                                                                            
