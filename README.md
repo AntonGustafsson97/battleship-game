@@ -1,32 +1,36 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Battleship Game
 
-Welcome,
+The Battleships game involves strategic thinking, where participants aim to destroy the opposing fleet by making guesses about co-ordinates.
+The version i made uses a board, created by python lists and incorporates a logic engine that lets the computer fire back at your every move.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+## Project Goals
+The goal of this project is to make a fun and logic game using python.
 
-## Reminders
+## User Goals
+The application user want to play a logic game while having fun
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+### Site Owner Goals
+The site owner goal is to provide a working and fun game which challange the user to push for the win while facing the computer.
 
-## Creating the Heroku app
+## User Experience
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Target Audience
+- The game is for all ages as long as you are in for a logic challange.
+- Users who like to pass time or just want to try a new game.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### User Stories
+- To have a great experience
+- To be able to face of against the computer.
+- To be given instructions along the way. For example when the game is won/lost.
+- To be given the choice to play again or exit the game while finished.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### Game Instructions
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Main Screen
+The main screen welcomes you to the game with some ASCII art and some instructions about the game. Feel free to make your first move as soon as you are ready.
 
-Connect your GitHub repository and deploy as normal.
+### Gameboard
+The board where the battle will be played out consists of two main components:
 
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+The Users board where your fleet will be positioned and displayed.
+The Target board that tracks your fired missiles and hits on the enemy.
