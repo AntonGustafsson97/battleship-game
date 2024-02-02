@@ -3,6 +3,8 @@
 The Battleships game involves strategic thinking, where participants aim to destroy the opposing fleet by making guesses about co-ordinates.
 The version i made uses a board, created by python lists and incorporates a logic engine that lets the computer fire back at your every move.
 
+[Live link to the game](https://the-battle-ship-game-ae2b90313f52.herokuapp.com/)
+
 ## Project Goals
 The goal of this project is to make a fun and logic game using python.
 
@@ -44,7 +46,7 @@ Those are the Co-Ordinates the user will fire at. If its a hit, the message 'Tha
 
 You start the game with 15 missiles so be strategic when choosing Co-ordinates! If you run out of missiles, the message 'Out of missiles! The enemy got away.' appears.
 
-You win the game by eliminating the enemys fleet. However if the enemy sinks all of your ships before that, you lose. 
+You win the game by eliminating the enemys fleet. However if the enemy sinks all of your ships before that, you lose.
 
 When the Game Over message appears, you get asked if you want to play again. You answer with Y/N. If you press Y, the game restarts. If you press N you are relieved of duty.
 
@@ -134,5 +136,5 @@ Deployment steps:
 ## Ackknowledgements
 The biggest thank you to my mentor Antonio Rodrigues for feedback and help along the way!
 
-The project was inspired by the work of 'Knowledge Mavens' on YouTube, and also from another student, Noah Samawi. 
+The project was inspired by the work of 'Knowledge Mavens' on YouTube, and also from another student, Noah Samawi.
  
