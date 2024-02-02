@@ -92,12 +92,12 @@ class Ship:
         """
         try:
             y_col = input('Enter Co-Ordinate (A-E): ').upper()
-            while y_col not in 'ABCDE':
+            while y_col not in ['A', 'B', 'C', 'D', 'E']:
                 print('Co-Ordinate Error. Enter a letter A-E.')
                 y_col = input('Enter Co-Ordinate (A-E): ').upper()
 
             x_row = input('Enter Co-Ordinate (1-5): ')
-            while x_row not in '12345':
+            while x_row not in ['1', '2', '3', '4', '5']:
                 print('Co-Ordinate Error. Enter a number 1-5.')
                 x_row = input('Enter Co-ordinate (1-5)')
 
