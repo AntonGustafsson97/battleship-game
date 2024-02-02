@@ -1,32 +1,29 @@
 import random
-import gspread
-from google.oauth2.service_account import Credentials
-
-# Global variables assigned to allow access through Google APIs to gspread.
-SCOPE = [
-    'https://www.googleapis.com/auth/spreadsheets',
-    'https://www.googleapis.com/auth/drive.file',
-    'https://www.googleapis.com/auth/drive'
-]
-
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('battleship-game')
+import time
 
 def welcome_screen():
     """
     Welcomes the user.
     Displays ASCII art and lets user start the game.
     """
-    art = """
+    art = r"""
         __        __   _
         \ \      / /__| | ___ ___  _ __ ___   ___
-         \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \ 
+         \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \
           \ V  V /  __/ | (_| (_) | | | | | |  __/
            \_/\_/ \___|_|\___\___/|_| |_| |_|\___
 
-    """
+        Instructions:
+            - Instruction 1. Start by entering a letter between A-E and press enter. 
+            - Instruction 2. Then enter a number between 1-5 and press enter.
+            - Instruction 3. A message will let you know if you hit/miss your enemys ship.
+            - Instruction 4. Keep firing missiles until you sink your enemys fleet or run out of missiles.
+
+            (ALL SHIPS ARE MADE OUT OF A SINGLE 'X') 
+            """
+    print(art)
+    time.sleep(5)
+
 
 class GameBoard:
     """
@@ -46,7 +43,6 @@ class GameBoard:
             'C': 2,
             'D': 3,
             'E': 4,
-           
         }
         return co_ordinates
 
@@ -59,6 +55,7 @@ class GameBoard:
             print("%d|%s|" % (row_num, "|".join(row)))
             row_num += 1
 
+
 class Ship:
     """
     Stores the values that are needed to generate ships.
@@ -66,13 +63,13 @@ class Ship:
     def __init__(self, board):
         self.board = board
 
-
     @staticmethod
     def generate_fleet(board):
         """
         The for statement loops through the board co-ordinate lists.
         Generates random integers and asigns the letter 'x' as a ship to each.
-        Intergers translated into co-ordinates and a ship is places on the board.
+        Intergers translated into co-ordinates and a ship is
+        places on the board.
         """
 
         for i in range(4):
@@ -105,7 +102,7 @@ class Ship:
 
         except ValueError or KeyError:
             print('Not a valid input. Enter a number or letter.')
-            return ship.user_launch_mission()
+            return Ship.user_launch_mission()
 
     def enemy_launch_mission():
         """
@@ -126,6 +123,7 @@ class Ship:
                     damaged_ships += 1
         return damaged_ships
 
+
 def run_battleship_game():
     """
     This is the main function.
@@ -143,7 +141,6 @@ def run_battleship_game():
 
     missiles = 15
     enemy_missiles = 15
-
     while missiles > 0:
         enemy_target_board.generate_board('Enemy Target')
         user_target_board.generate_board('User Target')
@@ -153,7 +150,8 @@ def run_battleship_game():
             user_target_board.board[user_x_row][user_y_col] == '-'
             or user_target_board.board[user_x_row][user_y_col] == 'X'
         ):
-            print('That location has already been fired at. Choose a new location.')
+            print('That location has already been fired at.')
+            print('Choose a new location.')
             user_x_row, user_y_col = Ship.user_launch_mission()
 
         if enemy_board[user_x_row][user_y_col] == 'X':
@@ -200,6 +198,7 @@ def run_battleship_game():
 
     game_over()
 
+
 def game_over():
     """
     This function runs when all ships has been sunk.
@@ -217,10 +216,12 @@ def game_over():
         print('Input Error. Type Y/N.')
         game_over()
 
+
 def main():
 
     welcome_screen()
     run_battleship_game()
 
+
 if __name__ == '__main__':
-    main()                                                                                                        
+    main()                                                                                                       
