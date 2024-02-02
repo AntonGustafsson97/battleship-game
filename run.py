@@ -2,14 +2,6 @@ import random
 import gspread
 from google.oauth2.service_account import Credentials
 
-
-
-
-
-
-
-
-
 # Global variables assigned to allow access through Google APIs to gspread.
 SCOPE = [
     'https://www.googleapis.com/auth/spreadsheets',
@@ -21,6 +13,20 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('battleship-game')
+
+def welcome_screen():
+    """
+    Welcomes the user.
+    Displays ASCII art and lets user start the game.
+    """
+    art = """
+        __        __   _
+        \ \      / /__| | ___ ___  _ __ ___   ___
+         \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \ 
+          \ V  V /  __/ | (_| (_) | | | | | |  __/
+           \_/\_/ \___|_|\___\___/|_| |_| |_|\___
+
+    """
 
 class GameBoard:
     """
@@ -213,7 +219,8 @@ def game_over():
 
 def main():
 
+    welcome_screen()
     run_battleship_game()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()                                                                                                        
