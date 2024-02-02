@@ -14,10 +14,12 @@ def welcome_screen():
            \_/\_/ \___|_|\___\___/|_| |_| |_|\___
 
         Instructions:
-            - Instruction 1. Start by entering a letter between A-E and press enter. 
-            - Instruction 2. Then enter a number between 1-5 and press enter.
-            - Instruction 3. A message will let you know if you hit/miss your enemys ship.
-            - Instruction 4. Keep firing missiles until you sink your enemys fleet or run out of missiles.
+        1. Start by entering a letter between A-E and press enter. 
+        2. Then enter a number between 1-5 and press enter.
+        3. A message will let you know if you hit/miss your enemys ship.
+        4. Keep firing missiles until you sink your enemys 
+        fleet or run out of missiles.
+        5. Good luck!
 
             (ALL SHIPS ARE MADE OUT OF A SINGLE 'X') 
             """
